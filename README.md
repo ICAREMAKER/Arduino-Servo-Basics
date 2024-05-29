@@ -7,13 +7,13 @@
 #include <Servo.h> 		// Inclure la librairie Servo.h
 
 Servo mon_servo;    	// création de l'objet mon_servo 
-int pin_servo = 6;      // Pin sur lequel est branché le servomoteur
-int position = 40;      // Position souhaitée en degré
+int pin_servo = 6;    // Pin sur lequel est branché le servomoteur
+int position = 40;    // Position souhaitée en degré
 
 void setup() 
 {
   mon_servo.attach(pin_servo);  	// attache le servo au pin spécifié sur l'objet mon_servo
-  mon_servo.write(position);       	// envoie la valeur (position en degré)au servomoteur mon_servo
+  mon_servo.write(position);      // envoie la valeur (position en degré)au servomoteur mon_servo
 }
 
 void loop() {}
@@ -30,10 +30,10 @@ NOTA - Pour un angle de 60° :
 ```C
 #include <Servo.h>
 
-Servo mon_servo;  		// Donner un nom au servo
+Servo mon_servo;  	// Donner un nom au servo
 
-int potpin = 0;  		// Définir sur quel broche se trouve le potentiomètre
-int val;    			// Créer une variable ‘’Val’’
+int potpin = 0;  	 // Définir sur quel broche se trouve le potentiomètre
+int val;    			 // Créer une variable ‘’Val’’
 
 void setup() 
 {
