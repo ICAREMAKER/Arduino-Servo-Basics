@@ -3,7 +3,7 @@
 ![SG90](https://github.com/ICAREMAKER/Arduino-Servo-Basics/assets/107696317/40a6efd8-04af-4d4d-af86-b2323c569537)
 
 
-## TUTO n°1
+## TUTO n°1: Définir une position
 ```C
 #include <Servo.h> 		// Inclure la librairie Servo.h
 
@@ -27,7 +27,7 @@ NOTA - Exemple pour un angle de 60° :
 ``` mon_servo.writeMicroseconds(1472); ```
 
 
-## TUTO n°2
+## TUTO n°2: Modifier une position avec un potentiometre
 ```C
 #include <Servo.h>
 
@@ -49,3 +49,45 @@ void loop()
  delay(15);                           	// Réaliser une pause de 15 millisecondes
 
 ```
+## TUTO n°2: Faire varier la vitesse de rotation
+```C 
+#include <Servo.h>
+
+Servo myservo1; 
+
+
+void setup() {
+  myservo1.attach(9);  // attache servo au pin 9
+  myservo1.writeMicroseconds(1000);
+  delay (1000);
+}
+
+void loop() {
+  Servo1_Smooth (1000, 1500, 10); // (debut,fin,vitesse)
+  delay(abs(1000-1500)*10);
+}
+
+//////////////////////////////////////////////////////////////////////
+// 0°  = 1000 ms microsecondes
+//90°  = 1500 ms microsecondes
+//180° = 2000 ms microsecondes
+/////////////////////////////////////////////////////////////////////
+
+void Servo1_Smooth (int InitPos, int TargetPos, int Timer) { //j'integre des variables locales
+static unsigned long TempsPasse = 0;
+unsigned long TempsActuel = millis();
+  if (TempsActuel - TempsPasse >= Timer) {
+    TempsPasse = TempsActuel;
+	
+	if (InitPos < TargetPos) {
+    InitPos++ ;
+    myservo1.writeMicroseconds(InitPos); } 
+	
+    if (InitPos > TargetPos) {
+    InitPos-- ;
+    myservo1.writeMicroseconds(InitPos);
+    }
+  }
+}
+```
+
