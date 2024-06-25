@@ -49,7 +49,7 @@ void loop()
  delay(15);                           	// Réaliser une pause de 15 millisecondes
 
 ```
-## TUTO n°2: Faire varier la vitesse de rotation
+## TUTO n°3: Faire varier la vitesse de rotation
 ```C 
 #include <Servo.h>
 
