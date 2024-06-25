@@ -13,7 +13,7 @@ int position = 40;    // Position souhaitée en degré
 
 void setup() 
 {
-  mon_servo.attach(pin_servo);  	// attache le servo au pin spécifié sur l'objet mon_servo
+  mon_servo.attach(pin_servo);    // attache le servo au pin spécifié sur l'objet mon_servo
   mon_servo.write(position);      // envoie la valeur (position en degré)au servomoteur mon_servo
 }
 
