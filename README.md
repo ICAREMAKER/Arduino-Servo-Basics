@@ -20,7 +20,7 @@ void setup()
 void loop() {}
 ```
 
-NOTA - Pour un angle de 60° :
+NOTA - Exemple pour un angle de 60° :
 
 ``` mon_servo.write (60); ```
 
