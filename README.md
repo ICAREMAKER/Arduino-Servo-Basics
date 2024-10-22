@@ -94,7 +94,7 @@ unsigned long TempsActuel = millis();
 
 Servo mon_servo;    	// création de l'objet mon_servo 
 int pin_servo = 6;    // Pin sur lequel est branché le servomoteur
-int position = 90;    // Position souhaitée en degré
+int position = 90;    // Position souhaitée en degré au démarage
 
 void setup() 
 {
@@ -105,7 +105,8 @@ void setup()
 
 void loop() {}
  if (Serial.available() > 0) {                    // Si le terminal est disponible
-    long myInt = Serial.parseInt(SKIP_ALL, '\n'); //J'écris une valeur via le terminal
+    long myInt = Serial.parseInt(SKIP_ALL, '\n'); // J'écris une valeur via le terminal
+    mon_servo.write(myInt);			  // La position de mon servo est la valeur de mon terminal
   }
 }
 ```
