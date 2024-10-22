@@ -68,9 +68,9 @@ void loop() {
 }
 
 //////////////////////////////////////////////////////////////////////
-// 0°  = 1000 ms microsecondes
-//90°  = 1500 ms microsecondes
-//180° = 2000 ms microsecondes
+// 0°  = 1000 ms microsecondes <=> SENS ANTI-HORLOGE
+//90°  = 1500 ms microsecondes <=> STOP ROTATION
+//180° = 2000 ms microsecondes <=> SENS HORLOGE
 /////////////////////////////////////////////////////////////////////
 
 void Servo1_Smooth (int InitPos, int TargetPos, int Timer) { //j'integre des variables locales
@@ -87,6 +87,25 @@ unsigned long TempsActuel = millis();
     InitPos-- ;
     myservo1.writeMicroseconds(InitPos);
     }
+```
+## TUTO n°4: Définir une position avec le terminal
+```C
+#include <Servo.h> 		// Inclure la librairie Servo.h
+
+Servo mon_servo;    	// création de l'objet mon_servo 
+int pin_servo = 6;    // Pin sur lequel est branché le servomoteur
+int position = 90;    // Position souhaitée en degré
+
+void setup() 
+{
+  Serial.begin(9600);
+  mon_servo.attach(pin_servo);    // attache le servo au pin spécifié sur l'objet mon_servo
+  mon_servo.write(position);      // envoie la valeur (position en degré)au servomoteur mon_servo
+}
+
+void loop() {}
+ if (Serial.available() > 0) {                    // Si le terminal est disponible
+    long myInt = Serial.parseInt(SKIP_ALL, '\n'); //J'écris une valeur via le terminal
   }
 }
 ```
