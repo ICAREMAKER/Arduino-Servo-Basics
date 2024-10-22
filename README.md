@@ -50,6 +50,8 @@ void loop()
 
 ```
 ## TUTO n°3: Faire varier la vitesse de rotation
+![servo360](https://github.com/user-attachments/assets/522c238c-31b2-414b-86bb-8f6ee9bbe961)
+
 ```C 
 #include <Servo.h>
 
