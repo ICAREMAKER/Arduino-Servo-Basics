@@ -112,4 +112,36 @@ void loop() {}
   }
 }
 ```
+## TUTO n°5: Utiliser un TIMER
+```C
+#include <Servo.h>
+Servo monServo;     // Crée un objet Servo
+int angle = 0;      // Variable pour stocker l'angle
+unsigned long TEMPSPRECEDENT_1 = 0;// Intervalle de temps en millisecondes (1 seconde)
+const int INTERVALLE_1 = 1000;  // 1 seconde
 
+void setup() {
+  monServo.attach(9);
+  Serial.begin(9600);
+}
+void loop() {
+  // Récupère le temps actuel
+  unsigned long TEMPSACTUEL_1 = millis();
+
+  // --- Logique du Timer Non-Bloquant ---
+  // Vérifie si l'intervalle s'est écoulé
+  if (TEMPSACTUEL_1 - TEMPSPRECEDENT_1 >= INTERVALLE_1) {
+    tempsPrecedent = tempsActuel; // Le temps est écoulé ! Met à jour le temps de la dernière exécution
+
+    // 2. Exécute l'action périodique
+    for (angle = 0; angle <= 180; angle += 1) {
+    monServo.write(angle);  // Envoie l'angle au servomoteur
+  }
+    for (angle = 180; angle >= 0; angle -= 1) {
+    monServo.write(angle);    
+  }
+  Serial.print("La valeur est : ");
+  Serial.println(angle);
+  }
+}
+```
